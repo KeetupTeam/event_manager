@@ -2,6 +2,7 @@
 //<script>
 elgg.provide("elgg.event_manager");
 elgg.provide("elgg.event_manager.speakers");
+elgg.provide("elgg.event_manager.sponsors");
 var infowindow = null;
 
 (function(){
@@ -586,6 +587,12 @@ elgg.event_manager.init = function() {
 	$('form#event_manager_speaker_edit').live('submit', elgg.event_manager.speakers.save_speaker);
 	$('.event-manager-speakers-delete').live('click', elgg.event_manager.speakers.delete_speaker);
 	
+	// Sponsors
+	$('.event-manager-sponsors-add').live('click', elgg.event_manager.sponsors.add_sponsor);
+	$('.event-manager-sponsors-edit').live('click', elgg.event_manager.sponsors.edit_sponsor);
+	$('form#event_manager_sponsor_edit').live('submit', elgg.event_manager.sponsors.save_sponsor);
+	$('.event-manager-sponsors-delete').live('click', elgg.event_manager.sponsors.delete_sponsor);
+	
 };
 
 // Speakers
@@ -632,8 +639,16 @@ elgg.event_manager.speakers.save_speaker = function(event) {
 				var output = data.output;
 				
 				if (output.list) {
-					$('.elgg-module-speakers ul.elgg-list-entity').replaceWith(output.list);
+					$('p.speakers_empty').remove();
+					var ul = $('.elgg-module-speakers ul.elgg-list-entity');
+					if (ul.length > 0) {
+						ul.replaceWith(output.list);
+					}
+					else {
+						$('.elgg-module-speakers .elgg-body').prepend(output.list);
+					}
 				}
+				
 				
 				var count_speakers = $('.elgg-module-speakers ul.elgg-list-entity li').length;
 				if (count_speakers >= <?php echo EVENT_MANAGER_EVENTSPEAKER_MAX; ?>) {
@@ -667,10 +682,116 @@ elgg.event_manager.speakers.delete_speaker = function(event) {
 			if (output.list) {
 				$('.elgg-module-speakers ul.elgg-list-entity').replaceWith(output.list);
 			}
+			else {
+				$('.elgg-module-speakers ul.elgg-list-entity').remove();
+			}
 			
 			var count_speakers = $('.elgg-module-speakers ul.elgg-list-entity li').length;
 			if (count_speakers < <?php echo EVENT_MANAGER_EVENTSPEAKER_MAX; ?>) {
 				$('div.content-speakers-add').removeClass('hidden');
+			}
+			
+			$.fancybox.hideActivity();
+		}
+	});
+
+	return false;
+
+};
+
+// Sponsors
+elgg.event_manager.sponsors.add_sponsor = function(event) {
+
+	event.preventDefault();
+
+	var event_guid = $(this).attr("rel");
+
+	$.fancybox({
+		'href': elgg.get_site_url() + 'events/sponsors/edit?event_guid=' + event_guid
+	});
+
+	return false;
+
+};
+elgg.event_manager.sponsors.edit_sponsor = function(event) {
+
+	event.preventDefault();
+		
+		var sponsor_guid = $(this).attr("rel");
+		
+		$.fancybox({
+			'href': elgg.get_site_url() + 'events/sponsors/edit?sponsor_guid=' + sponsor_guid
+		});
+		
+		return false;
+
+};
+elgg.event_manager.sponsors.save_sponsor = function(event) {
+	
+	$.fancybox.showActivity();
+
+	var options = {
+		type: 'POST',      // 'get' or 'post', override for form's 'method' attribute
+		dataType: 'json',
+		success: function(data) {
+			if (data.system_messages.error.length > 0) {
+				elgg.register_error(data.system_messages.error);
+			}
+			else {
+				elgg.system_message(data.system_messages.success);
+				
+				var output = data.output;
+				
+				if (output.list) {
+					$('p.sponsors_empty').remove();
+					var ul = $('.elgg-module-sponsors ul.elgg-list-entity');
+					if (ul.length > 0) {
+						ul.replaceWith(output.list);
+					}
+					else {
+						$('.elgg-module-sponsors .elgg-body').prepend(output.list);
+					}
+				}
+				
+				var count_sponsors = $('.elgg-module-sponsors ul.elgg-list-entity li').length;
+				if (count_sponsors >= <?php echo EVENT_MANAGER_EVENTSPONSOR_MAX; ?>) {
+					$('div.content-sponsors-add').addClass('hidden');
+				}
+				
+				$.fancybox.close();
+			}
+
+			$.fancybox.hideActivity();
+		}
+	};
+	
+	$(this).ajaxSubmit(options);
+
+	return false;
+	
+}
+elgg.event_manager.sponsors.delete_sponsor = function(event) {
+
+	event.preventDefault();
+	
+	$.fancybox.showActivity();
+	
+	var action = $(this).attr('href');
+
+	elgg.action(action, {
+		success: function(data) {
+			var output = data.output;
+			
+			if (output.list) {
+				$('.elgg-module-sponsors ul.elgg-list-entity').replaceWith(output.list);
+			}
+			else {
+				$('.elgg-module-sponsors ul.elgg-list-entity').remove();
+			}
+			
+			var count_sponsors = $('.elgg-module-sponsors ul.elgg-list-entity li').length;
+			if (count_sponsors < <?php echo EVENT_MANAGER_EVENTSPONSOR_MAX; ?>) {
+				$('div.content-sponsors-add').removeClass('hidden');
 			}
 			
 			$.fancybox.hideActivity();

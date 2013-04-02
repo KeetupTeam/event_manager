@@ -22,7 +22,11 @@ if ($success) {
 	$output = array();
 	
 	if ($container instanceof Event) {
-		$output['list'] = $container->listEventSpeakers();
+		$list =  $container->listEventSpeakers();
+		if (empty($list)) {
+			$list = '<p class="speakers_empty">'.elgg_echo('event_manager:speakers:empty').'</p>';
+		}
+		$output['list'] = $list;
 	}
 	
 	echo json_encode($output);

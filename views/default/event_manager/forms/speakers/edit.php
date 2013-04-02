@@ -48,6 +48,7 @@ if ($entity && $entity->canEdit() && !$error) {
 	$form_body = "<div>";
 	$form_body .= "<label>".elgg_echo('event_manager:speakers:form:image')." *</label>";
 	$form_body .= elgg_view('input/file', array('name' => 'speaker_image'));
+	$form_body .= '<p><b>'.elgg_echo('event_manager:speakers:form:image:note').'</b>'.elgg_echo('event_manager:speakers:form:image:note:unchanged').'</p>';
 	$form_body .= "</div>";
 	
 	// Name

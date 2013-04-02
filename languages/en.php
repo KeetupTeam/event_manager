@@ -67,6 +67,7 @@ $english = array(
 	'event_manager:edit:form:organizer_rsvp' => 'Add me as organizer to this event',
 	'event_manager:edit:form:with_program' => 'Specify daily program?',
 	'event_manager:edit:form:with_speakers' => 'Speakers?',
+	'event_manager:edit:form:with_sponsors' => 'Sponsors?',
 	'event_manager:edit:form:delete_current_icon' => 'Delete current icon?',
 	'event_manager:edit:form:comments_on' => 'Comments on?',
 	'event_manager:edit:form:registration_ended' => 'Disable registration to this event',
@@ -301,11 +302,14 @@ If you didn't request to unsubscribe from the event, please disregard this e-mai
 	'requiredfields' => 'Required fields',
 	'confirm' => 'Confirm',
 	
+	// Speakers
 	'event_manager:speakers:title' => 'Speakers',
 	'event_manager:speakers:add' => 'Add speaker',
 	'event_manager:speakers:empty' => 'No speakers',
 	'event_manager:spakers:form:title' => 'Add speaker',
 	'event_manager:speakers:form:image' => 'Image',
+	'event_manager:speakers:form:image:note' => 'Note: ',
+	'event_manager:speakers:form:image:note:unchanged' => 'Leave blank to leave unchanged',
 	'event_manager:speakers:form:name' => 'Name',
 	'event_manager:speakers:form:url' => 'URL',
 	'event_manager:speakers:form:bio' => 'Bio',
@@ -322,6 +326,27 @@ If you didn't request to unsubscribe from the event, please disregard this e-mai
 	'event_manager:speakers:delete:success' => 'The speaker was successfully removed.',
 	'event_manager:speakers:delete:error' => 'There was an error when trying to remove the speaker.',
 	'event_manager:speakers:maximum' => 'Maximum %s speakers',
+	
+	// Sponsors
+	'event_manager:sponsors:title' => 'Sponsors',
+	'event_manager:sponsors:add' => 'Add sponsor',
+	'event_manager:sponsors:empty' => 'No sponsors',
+	'event_manager:sponsors:form:title' => 'Add sponsor',
+	'event_manager:sponsors:form:image' => 'Image',
+	'event_manager:sponsors:form:image:note' => 'Note: ',
+	'event_manager:sponsors:form:image:note:unchanged' => 'Leave blank to leave unchanged',
+	'event_manager:sponsors:form:name' => 'Name',
+	'event_manager:sponsors:form:url' => 'URL',
+	'event_manager:sponsors:form:save' => 'Save',
+	'event_manager:sponsors:save:error' => 'There was an error when trying to save the sponsor.',
+	'event_manager:sponsors:image:error' => 'The image is required.',
+	'event_manager:sponsors:name:error' => 'The name is required.',
+	'event_manager:sponsors:image:type:error' => 'Uploaded image does not correspond with the following formats: jpep, png, gif',
+	'event_manager:sponsors:url:error' => 'URL invalid.',
+	'event_manager:sponsors:save:success' => 'The sponsor was successfully saved.',
+	'event_manager:sponsors:delete:success' => 'The sponsor was successfully removed.',
+	'event_manager:sponsors:delete:error' => 'There was an error when trying to remove the sponsor.',
+	'event_manager:sponsors:maximum' => 'Maximum %s sponsors',
 );
 
 add_translation('en', $english);

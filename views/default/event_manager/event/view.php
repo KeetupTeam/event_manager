@@ -134,6 +134,11 @@ if ($event->with_speakers) {
 	$body .= elgg_view('event_manager/speakers/view', $vars);
 }
 
+// Sponsors
+if ($event->with_sponsors) {
+	$body .= elgg_view('event_manager/sponsors/view', $vars);
+}
+
 // Comments
 if ($event->comments_on) {
 	$body .= elgg_view_comments($event);

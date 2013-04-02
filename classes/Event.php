@@ -787,6 +787,52 @@
 			
 		}
 		
+		/**
+		 * Get Event Sponsors
+		 */
+		public function getEventSponsors($options = array()) {
+			
+			$default = array(
+				'type' => 'object',
+				'subtype' => EventSponsor::SUBTYPE,
+				'container_guid' => $this->getGUID(),
+				'offset' => 0,
+				'limit' => null,
+				'count' => false,
+				'order_by' => 'e.time_created ASC',
+			);
+			
+			if (!is_array($options)) {
+				$options = array();
+			}
+			$options = array_merge($default, $options);
+			
+			return elgg_get_entities($options);
+			
+		}
+		/**
+		 * List Event Sponsors
+		 */
+		public function listEventSponsors($options = array()) {
+			
+			$default = array(
+				'type' => 'object',
+				'subtype' => EventSponsor::SUBTYPE,
+				'container_guid' => $this->getGUID(),
+				'offset' => 0,
+				'limit' => null,
+				'order_by' => 'e.time_created ASC',
+			);
+			
+			if (!is_array($options)) {
+				$options = array();
+			}
+			$options = array_merge($default, $options);
+			
+			return elgg_list_entities($options);
+			
+		}
+		
 		public function isUserRegistered($userid = null, $count = true) {
 			if($userid == null) {
 				$userid = elgg_get_logged_in_user_guid();

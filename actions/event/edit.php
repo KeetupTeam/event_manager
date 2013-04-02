@@ -29,6 +29,7 @@
 	$access_id 				= get_input("access_id");
 	$with_program			= get_input("with_program");
 	$with_speakers			= get_input("with_speakers");
+	$with_sponsors			= get_input("with_sponsors");
 	$delete_current_icon	= get_input("delete_current_icon");
 	$registration_needed	= get_input("registration_needed");
 	$register_nologin		= get_input("register_nologin");
@@ -128,6 +129,7 @@
 		$event->end_time 			= $end_time;
 		$event->with_program 		= $with_program;
 		$event->with_speakers 		= $with_speakers;
+		$event->with_sponsors 		= $with_sponsors;
 		$event->endregistration_day = $endregistration_day;
 		$event->register_nologin 	= $register_nologin;
 		

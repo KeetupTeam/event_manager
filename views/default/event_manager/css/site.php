@@ -380,6 +380,7 @@
 	background: #FFFFFF;
 }
 
-.elgg-module-event-manager-speakers {
+.elgg-module-event-manager-speakers,
+.elgg-module-event-manager-sponsors {
 	width: 500px;
 }

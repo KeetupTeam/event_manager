@@ -26,6 +26,7 @@
 			"endregistration_day" 	=> ELGG_ENTITIES_ANY_VALUE,
 			"with_program" 			=> ELGG_ENTITIES_ANY_VALUE,
 			"with_speakers" 		=> ELGG_ENTITIES_ANY_VALUE,
+			"with_sponsors" 		=> ELGG_ENTITIES_ANY_VALUE,
 			"registration_needed" 	=> ELGG_ENTITIES_ANY_VALUE,
 			"register_nologin" 		=> ELGG_ENTITIES_ANY_VALUE,
 			"show_attendees"		=> 1,
@@ -148,6 +149,7 @@
 	
 	$form_body .=	elgg_view('input/checkboxes', array('name' => 'with_program', 'id' => 'with_program', 'value' => $fields["with_program"], 'options' => array(elgg_echo('event_manager:edit:form:with_program')=>'1')));
 	$form_body .=	elgg_view('input/checkboxes', array('name' => 'with_speakers', 'id' => 'with_speakers', 'value' => $fields["with_speakers"], 'options' => array(elgg_echo('event_manager:edit:form:with_speakers')=>'1')));
+	$form_body .=	elgg_view('input/checkboxes', array('name' => 'with_sponsors', 'id' => 'with_sponsors', 'value' => $fields["with_sponsors"], 'options' => array(elgg_echo('event_manager:edit:form:with_sponsors')=>'1')));
 	$form_body .= 	elgg_view('input/checkboxes', array('name' => 'comments_on', 'value' => $fields["comments_on"], 'options' => array(elgg_echo('event_manager:edit:form:comments_on')=>'1')));
 	$form_body .= 	elgg_view('input/checkboxes', array('name' => 'notify_onsignup', 'value' => $fields["notify_onsignup"], 'options' => array(elgg_echo('event_manager:edit:form:notify_onsignup')=>'1')));
 	$form_body .= 	elgg_view('input/checkboxes', array('name' => 'registration_needed', 'value' => $fields["registration_needed"], 'options' => array(elgg_echo('event_manager:edit:form:registration_needed')=>'1')));

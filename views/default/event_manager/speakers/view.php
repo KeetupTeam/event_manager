@@ -25,7 +25,7 @@ if ($speakers) {
 	$content .= $speakers;
 }
 else {
-	$content .= '<p>'.elgg_echo('event_manager:speakers:empty').'</p>';
+	$content .= '<p class="speakers_empty">'.elgg_echo('event_manager:speakers:empty').'</p>';
 }
 
 if ($event->canEdit()) {
