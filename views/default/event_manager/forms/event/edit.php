@@ -135,7 +135,7 @@
 		$form_body .= "<tr><td class='event_manager_event_edit_label'>" . elgg_echo('event_manager:edit:form:type') . "</td><td>" . elgg_view('input/dropdown', array('name' => 'event_type', 'value' => $fields["event_type"], 'options' => $type_options)) . "</td></tr>";
 	} 
 
-	$form_body .= "<tr><td class='event_manager_event_edit_label'>" . elgg_echo('event_manager:edit:form:contact_details') . "</td><td>" . elgg_view('input/text', array('name' => 'contact_details', 'value' => $fields["contact_details"])) . "</td></tr>";
+	$form_body .= "<tr><td class='event_manager_event_edit_label'>" . elgg_echo('event_manager:edit:form:contact_details') . "</td><td>" . elgg_view('input/longtext', array('name' => 'contact_details', 'value' => $fields["contact_details"])) . "</td></tr>";
 	
 	$form_body .= "<tr><td class='event_manager_event_edit_label'>" . elgg_echo('event_manager:edit:form:website') . "</td><td>" . elgg_view('input/url', array('name' => 'website', 'value' => $fields["website"])) . "</td></tr>";
 

@@ -81,7 +81,7 @@ if ($website = $event->website) {
 }
 
 if ($contact_details = $event->contact_details) {
-	$event_details .= '<tr><td><label>' . elgg_echo('event_manager:edit:form:contact_details') . ':</label></td><td>' . elgg_view("output/text", array("value" => $contact_details)) . '</td></tr>';
+	$event_details .= '<tr><td><label>' . elgg_echo('event_manager:edit:form:contact_details') . ':</label></td><td>' . elgg_view("output/longtext", array("value" => $contact_details)) . '</td></tr>';
 }
 
 if ($twitter_hash = $event->twitter_hash) {
