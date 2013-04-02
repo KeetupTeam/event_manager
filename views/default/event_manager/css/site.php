@@ -379,3 +379,7 @@
 #event_manager_registrationform_fields li {
 	background: #FFFFFF;
 }
+
+.elgg-module-event-manager-speakers {
+	width: 500px;
+}

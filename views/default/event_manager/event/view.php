@@ -15,6 +15,7 @@ $owner_link = elgg_view('output/url', array(
 	'is_trusted' => true
 ));
 
+// Data
 $author_text = elgg_echo('byline', array($owner_link));
 $date = elgg_view_friendly_time($event->time_created);
 
@@ -40,7 +41,7 @@ if (!$event->with_program) {
 	$event_details .= '<tr><td><label>' . elgg_echo('event_manager:edit:form:start_time') . ':</label></td><td>' . date('H', $event->start_time) . ':' . date('i', $event->start_time) . '</td></tr>';
 }
 
-// optional end day
+// Optional end day
 if ($organizer = $event->organizer) {
 	$event_details .= '<tr><td><label>' . elgg_echo('event_manager:edit:form:organizer') . ':</label></td><td>' . $organizer . '</td></tr>';
 }
@@ -118,14 +119,22 @@ $body = elgg_view_module("main", "", $event_details);
 
 $body .= elgg_view_module("main", "", elgg_view("event_manager/event/actions", $vars));
 
+// Attendees
 if ($event->show_attendees) {
 	$body .= elgg_view("event_manager/event/attendees", $vars);
 }
 
+// Programs
 if ($event->with_program) {
 	$body .= elgg_view("event_manager/program/view", $vars);
 }
 
+// Speakers
+if ($event->with_speakers) {
+	$body .= elgg_view('event_manager/speakers/view', $vars);
+}
+
+// Comments
 if ($event->comments_on) {
 	$body .= elgg_view_comments($event);
 }

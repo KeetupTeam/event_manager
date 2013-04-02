@@ -1,6 +1,7 @@
 <?php ?>
 //<script>
 elgg.provide("elgg.event_manager");
+elgg.provide("elgg.event_manager.speakers");
 var infowindow = null;
 
 (function(){
@@ -578,6 +579,106 @@ elgg.event_manager.init = function() {
 	$("#event-manager-new-slot-set-name-button").live("click", function(){
 		elgg.event_manager.add_new_slot_set_name($("#event-manager-new-slot-set-name").val());
 	});
+	
+	// Speakers
+	$('.event-manager-speakers-add').live('click', elgg.event_manager.speakers.add_speaker);
+	$('.event-manager-speakers-edit').live('click', elgg.event_manager.speakers.edit_speaker);
+	$('form#event_manager_speaker_edit').live('submit', elgg.event_manager.speakers.save_speaker);
+	$('.event-manager-speakers-delete').live('click', elgg.event_manager.speakers.delete_speaker);
+	
+};
+
+// Speakers
+elgg.event_manager.speakers.add_speaker = function(event) {
+
+	event.preventDefault();
+
+	var event_guid = $(this).attr("rel");
+
+	$.fancybox({
+		'href': elgg.get_site_url() + 'events/speakers/edit?event_guid=' + event_guid
+	});
+
+	return false;
+
+};
+elgg.event_manager.speakers.edit_speaker = function(event) {
+
+	event.preventDefault();
+		
+		var speaker_guid = $(this).attr("rel");
+		
+		$.fancybox({
+			'href': elgg.get_site_url() + 'events/speakers/edit?speaker_guid=' + speaker_guid
+		});
+		
+		return false;
+
+};
+elgg.event_manager.speakers.save_speaker = function(event) {
+	
+	$.fancybox.showActivity();
+
+	var options = {
+		type: 'POST',      // 'get' or 'post', override for form's 'method' attribute
+		dataType: 'json',
+		success: function(data) {
+			if (data.system_messages.error.length > 0) {
+				elgg.register_error(data.system_messages.error);
+			}
+			else {
+				elgg.system_message(data.system_messages.success);
+				
+				var output = data.output;
+				
+				if (output.list) {
+					$('.elgg-module-speakers ul.elgg-list-entity').replaceWith(output.list);
+				}
+				
+				var count_speakers = $('.elgg-module-speakers ul.elgg-list-entity li').length;
+				if (count_speakers >= <?php echo EVENT_MANAGER_EVENTSPEAKER_MAX; ?>) {
+					$('div.content-speakers-add').addClass('hidden');
+				}
+				
+				$.fancybox.close();
+			}
+
+			$.fancybox.hideActivity();
+		}
+	};
+	
+	$(this).ajaxSubmit(options);
+
+	return false;
+	
+}
+elgg.event_manager.speakers.delete_speaker = function(event) {
+
+	event.preventDefault();
+	
+	$.fancybox.showActivity();
+	
+	var action = $(this).attr('href');
+
+	elgg.action(action, {
+		success: function(data) {
+			var output = data.output;
+			
+			if (output.list) {
+				$('.elgg-module-speakers ul.elgg-list-entity').replaceWith(output.list);
+			}
+			
+			var count_speakers = $('.elgg-module-speakers ul.elgg-list-entity li').length;
+			if (count_speakers < <?php echo EVENT_MANAGER_EVENTSPEAKER_MAX; ?>) {
+				$('div.content-speakers-add').removeClass('hidden');
+			}
+			
+			$.fancybox.hideActivity();
+		}
+	});
+
+	return false;
+
 };
 
 elgg.register_hook_handler('init', 'system', elgg.event_manager.init);

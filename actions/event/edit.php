@@ -28,6 +28,7 @@
 	$waiting_list			= get_input("waiting_list");
 	$access_id 				= get_input("access_id");
 	$with_program			= get_input("with_program");
+	$with_speakers			= get_input("with_speakers");
 	$delete_current_icon	= get_input("delete_current_icon");
 	$registration_needed	= get_input("registration_needed");
 	$register_nologin		= get_input("register_nologin");
@@ -126,6 +127,7 @@
 		$event->start_time 			= $start_time;
 		$event->end_time 			= $end_time;
 		$event->with_program 		= $with_program;
+		$event->with_speakers 		= $with_speakers;
 		$event->endregistration_day = $endregistration_day;
 		$event->register_nologin 	= $register_nologin;
 		
@@ -250,6 +252,7 @@
 		$_SESSION['createevent_values']['end_time'] 			= $end_time;
 		$_SESSION['createevent_values']['endregistration_day'] 	= $endregistration_day;
 		$_SESSION['createevent_values']['with_program']			= $with_program;
+		$_SESSION['createevent_values']['with_speakers']		= $with_speakers;
 		$_SESSION['createevent_values']['registration_ended']	= $registration_ended;
 		$_SESSION['createevent_values']['registration_needed']	= $registration_needed;
 		$_SESSION['createevent_values']['register_nologin']		= $register_nologin;

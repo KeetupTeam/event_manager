@@ -8,6 +8,8 @@ define("EVENT_MANAGER_FORMAT_DATE_EVENTDAY", "Y-m-d");
 
 define("EVENT_MANAGER_SEARCH_LIST_LIMIT", 10);
 define("EVENT_MANAGER_SEARCH_LIST_MAPS_LIMIT", 50);
+define('EVENT_MANAGER_EVENTSPEAKER_BIO_MAX', 400);
+define('EVENT_MANAGER_EVENTSPEAKER_MAX', 7);
 
 define("EVENT_MANAGER_RELATION_ATTENDING", "event_attending");
 define("EVENT_MANAGER_RELATION_ATTENDING_WAITINGLIST", "event_waitinglist");
@@ -30,6 +32,7 @@ require_once(dirname(__FILE__) . "/lib/events.php");
 function event_manager_init() {
 	// Register subtype
 	run_function_once('event_manager_run_once_subtypes');
+	add_subtype('object', EventSpeaker::SUBTYPE, 'EventSpeaker');
 
 	// Register entity_type for search
 	elgg_register_entity_type('object', Event::SUBTYPE);
@@ -69,6 +72,15 @@ function event_manager_init() {
 	elgg_register_js("event_manager.maps.base", "//maps.googleapis.com/maps/api/js?key=" . $maps_key . "&sensor=true");
 
 	elgg_register_js("jquery.tweet", elgg_get_site_url() . "mod/event_manager/vendors/tweet/jquery.tweet.js");
+	
+	elgg_register_js('jquery.form', 'mod/event_manager/vendors/jquery-form/jquery.form.js');
+	elgg_load_js('jquery.form');
+	
+	$path_actions_speakers = elgg_get_plugins_path() . 'event_manager/actions/speakers/';
+	elgg_register_action('event_manager/speakers/edit', $path_actions_speakers . 'edit.php');
+	elgg_register_action('event_manager/speakers/delete', $path_actions_speakers . 'delete.php');
+	elgg_register_plugin_hook_handler('entity:icon:url', 'object', 'event_manager_eventspeaker_icon_url_override');
+	
 }
 
 function event_manager_page_handler($page) {
@@ -171,6 +183,21 @@ function event_manager_pagesetup() {
 			elgg_unregister_widget_type("events");
 		}
 	}
+}
+
+function event_manager_eventspeaker_icon_url_override($hook, $type, $returnvalue, $params) {
+	
+	/* @var ElggGroup $group */
+	$eventspeaker = $params['entity'];
+	$size = $params['size'];
+
+	$icontime = $eventspeaker->icontime;
+	if ($icontime) {
+		// return thumbnail
+		return "events/speakers/icon/?guid=".$eventspeaker->guid."&size=".$size;
+	}
+
+	return $returnvalue;
 }
 
 // register default elgg events
