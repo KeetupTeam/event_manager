@@ -110,6 +110,7 @@ if ($thumbs['tiny']) { // just checking if resize successful
 
 if ($success) {
 	$output = array();
+	$output['guid'] = $success;
 	$output['list'] = $event->listEventSponsors();
 	
 	echo json_encode($output);

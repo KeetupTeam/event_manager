@@ -39,7 +39,7 @@ $icon_sizes = elgg_get_config('icon_sizes');
 $size = $vars['size'];
 
 $img = elgg_view('output/img', array(
-	'src' => $entity->getIconURL($vars['size']),
+	'src' => $entity->getIconURL($vars['size']).'&t='.time(),
 	'alt' => $title,
 	'class' => $class,
 	'width' => $size != 'master' ? $icon_sizes[$size]['w'] : NULL,

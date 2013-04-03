@@ -118,6 +118,7 @@ if ($thumbs['tiny']) { // just checking if resize successful
 
 if ($success) {
 	$output = array();
+	$output['guid'] = $success;
 	$output['list'] = $event->listEventSpeakers();
 	
 	echo json_encode($output);

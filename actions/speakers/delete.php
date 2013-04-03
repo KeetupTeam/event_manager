@@ -26,6 +26,7 @@ if ($success) {
 		if (empty($list)) {
 			$list = '<p class="speakers_empty">'.elgg_echo('event_manager:speakers:empty').'</p>';
 		}
+		$output['guid'] = $guid;
 		$output['list'] = $list;
 	}
 	

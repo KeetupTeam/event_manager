@@ -651,9 +651,23 @@ elgg.event_manager.speakers.save_speaker = function(event) {
 				
 				if (output.list) {
 					$('p.speakers_empty').remove();
+					
 					var ul = $('.elgg-module-speakers ul.elgg-list-entity');
 					if (ul.length > 0) {
-						ul.replaceWith(output.list);
+						//ul.replaceWith(output.list);
+						var li_new = $(output.list).find('li#elgg-object-'+output.guid);
+						var li_old = ul.find('li#elgg-object-'+output.guid);
+						
+						if (li_old.length > 0) {
+//							var li_img = li_new.find('img');
+//							var src = li_img.attr('src');
+//							li_img.attr("src", src + "&timestamp=" + new Date().getTime());
+							
+							li_old.replaceWith(li_new);
+						}
+						else {
+							ul.append(li_new);
+						}
 					}
 					else {
 						$('.elgg-module-speakers .elgg-body').prepend(output.list);
@@ -691,7 +705,10 @@ elgg.event_manager.speakers.delete_speaker = function(event) {
 			var output = data.output;
 			
 			if (output.list) {
-				$('.elgg-module-speakers ul.elgg-list-entity').replaceWith(output.list);
+//				$('.elgg-module-speakers ul.elgg-list-entity').replaceWith(output.list);
+				if (output.guid) {
+					$('.elgg-module-speakers ul.elgg-list-entity li#elgg-object-'+output.guid).remove();
+				}
 			}
 			else {
 				$('.elgg-module-speakers ul.elgg-list-entity').remove();
@@ -755,9 +772,23 @@ elgg.event_manager.sponsors.save_sponsor = function(event) {
 				
 				if (output.list) {
 					$('p.sponsors_empty').remove();
+					
 					var ul = $('.elgg-module-sponsors ul.elgg-list-entity');
 					if (ul.length > 0) {
-						ul.replaceWith(output.list);
+						//ul.replaceWith(output.list);
+						var li_new = $(output.list).find('li#elgg-object-'+output.guid);
+						var li_old = ul.find('li#elgg-object-'+output.guid);
+						
+						if (li_old.length > 0) {
+//							var li_img = li_new.find('img');
+//							var src = li_img.attr('src');
+//							li_img.attr("src", src + "&timestamp=" + new Date().getTime());
+							
+							li_old.replaceWith(li_new);
+						}
+						else {
+							ul.append(li_new);
+						}
 					}
 					else {
 						$('.elgg-module-sponsors .elgg-body').prepend(output.list);
@@ -794,7 +825,10 @@ elgg.event_manager.sponsors.delete_sponsor = function(event) {
 			var output = data.output;
 			
 			if (output.list) {
-				$('.elgg-module-sponsors ul.elgg-list-entity').replaceWith(output.list);
+//				$('.elgg-module-sponsors ul.elgg-list-entity').replaceWith(output.list);
+				if (output.guid) {
+					$('.elgg-module-sponsors ul.elgg-list-entity li#elgg-object-'+output.guid).remove();
+				}
 			}
 			else {
 				$('.elgg-module-sponsors ul.elgg-list-entity').remove();
