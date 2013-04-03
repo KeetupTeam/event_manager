@@ -30,7 +30,7 @@ else {
 	$owner_link = elgg_view('output/url', array(
 		'href' => $owner->getURL(),
 		'text' => $owner->name,
-			));
+	));
 
 	$author_text = elgg_echo('byline', array($owner_link));
 	if (($container instanceof ElggGroup) && (elgg_get_page_owner_guid() !== $container->getGUID())) {
@@ -45,7 +45,7 @@ else {
 	if (!elgg_in_context("widgets")) {
 		$subtitle = "<p>$author_text $date</p>";
 
-		if ($location = $event->getLocation()) {
+		if ($location = $event->getLocation() && !elgg_in_context('admin')) {
 			$content .= '<div>' . elgg_echo('event_manager:edit:form:location') . ': ';
 			$content .= '<a href="' . elgg_get_site_url() . 'events/event/route?from=' . $location . '" class="openRouteToEvent">' . $location . '</a>';
 			$content .= '</div>';
@@ -55,9 +55,11 @@ else {
 			$content .= "<div>" . $shortdescription . "</div>";
 		}
 	}
-
-	$content .= elgg_view("event_manager/event/actions", $vars);
-
+	
+	if (!elgg_in_context('admin')) {
+		$content .= elgg_view("event_manager/event/actions", $vars);
+	}
+	
 	$icon = elgg_view_entity_icon($event, "date");
 
 	$menu = elgg_view_menu('entity', array(
@@ -75,6 +77,16 @@ else {
 		'content' => $content,
 	);
 	$params = $params + $vars;
+	
+	if (elgg_in_context('admin') && is_callable('landing_pages_events_get_url')) {
+		$params_title = array(
+			'text' => $event->title,
+			'href' => landing_pages_events_get_url($event),
+			'is_trusted' => true,
+		);
+		$title_link = elgg_view('output/url', $params_title);
+		$params['title'] = $title_link;
+	}
 
 	$list_body = elgg_view('object/elements/summary', $params);
 
