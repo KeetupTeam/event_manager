@@ -14,7 +14,7 @@
 				echo elgg_echo("event_manager:event:rsvp");
 			}
 			echo "</span>";
-			echo "<ul class='event_manager_event_actions_drop_down event_manager_event_select_relationship'>";
+			echo "<ul class='event_manager_event_actions_drop_down event_manager_event_select_relationship actions_rsvp'>";
 			foreach($event_relationship_options as $rel) {
 				if(($rel == EVENT_MANAGER_RELATION_ATTENDING) || $event->$rel) {
 					if($rel == EVENT_MANAGER_RELATION_ATTENDING) {

@@ -176,13 +176,18 @@
     border-width: 1px 1px 1px 1px;
     list-style-type: none;
     display: none;
+	list-style: none outside none !important;
 }
-
 .event_manager_event_actions_drop_down li {
 	padding: 0 18px 0 10px;
 	line-height: 18px;	
 }
-
+.actions_rsvp {
+	left: 85px;
+}
+.actions_tools {
+	left: 35px;
+}
 /* Event Program Edit */
 #event_manager_program_edit {
 	float: right;

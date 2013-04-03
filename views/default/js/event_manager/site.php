@@ -88,15 +88,26 @@ var infowindow = null;
     $(".event_manager_event_actions").live("click", function(event){
         if($(this).next().is(":hidden")){
             // only needed if the current menu is already dropped down
-	    	$("body > .event_manager_event_actions_drop_down").remove();
-			$("body").append($(this).next().clone());
-			css_top = $(this).offset().top + $(this).height(); 
-			css_left = $(this).offset().left; 
-			$("body > .event_manager_event_actions_drop_down").css({top: css_top, left: css_left}).show();;
+//	    	$("body > .event_manager_event_actions_drop_down").remove();
+//			$("body").append($(this).next().clone());
+//			css_top = $(this).offset().top + $(this).height();
+//			css_left = $(this).offset().left;
+//			$("body > .event_manager_event_actions_drop_down").css({top: css_top, left: css_left}).show();
+			if ($(this).next().hasClass('actions_tools')) {
+				$(".event_manager_event_actions_drop_down.actions_rsvp").hide();
+			}
+			else if ($(this).next().hasClass('actions_rsvp')) {
+				$(".event_manager_event_actions_drop_down.actions_tools").hide();
+			}
+			var css_top = $(this).offset().top - $(this).height();
+			$(this).next().css({top: css_top}).show();
         }
         
 		event.stopPropagation();
     });
+	$(":not(.event_manager_event_actions:not)").live('click', function(event) {
+		$(".event_manager_event_actions").next().hide();
+	});
 
     // hide drop down menu items
     $("body").live("click", function(){

@@ -3,7 +3,7 @@
 	$event = $vars["entity"];
 
 	$toolLinks = "<span class='event_manager_event_actions'>" . elgg_echo('tools') . "</span>";
-	$toolLinks .= "<ul class='event_manager_event_actions_drop_down'>";
+	$toolLinks .= "<ul class='event_manager_event_actions_drop_down actions_tools'>";
 	$toolLinks .= "<li>" . elgg_view("output/url", array("href" => "events/event/edit/" . $event->getGUID(), "text" => elgg_echo("event_manager:event:editevent"))) . "</li>";
 	$toolLinks .= "<li>" . elgg_view("output/confirmlink", array("href" => "action/event_manager/event/delete?guid=" . $event->getGUID(), "text" => elgg_echo("event_manager:event:deleteevent"))) . "</li>";
 	$toolLinks .= "<li>" . elgg_view("output/url", array("href" => "events/event/upload/" . $event->getGUID(), "text" => elgg_echo("event_manager:event:uploadfiles"))) . "</li>";
