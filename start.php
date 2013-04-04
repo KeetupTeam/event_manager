@@ -47,11 +47,11 @@ function event_manager_init() {
 	elgg_register_page_handler("events", "event_manager_page_handler");
 
 	// add site menu item
-	elgg_register_menu_item("site", array(
-		"name" => "event_manager",
-		"text" => elgg_echo("event_manager:menu:title"),
-		"href" => "/events"
-	));
+//	elgg_register_menu_item("site", array(
+//		"name" => "event_manager",
+//		"text" => elgg_echo("event_manager:menu:title"),
+//		"href" => "/events"
+//	));
 
 	// add group tool option
 	add_group_tool_option('event_manager', elgg_echo('groups:enableevents'), true);
