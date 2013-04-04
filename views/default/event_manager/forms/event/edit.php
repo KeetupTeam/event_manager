@@ -190,6 +190,13 @@
 	$form_body .= elgg_view('input/submit', array('value' => elgg_echo('save')));
 	$form_body .= '<div class="event_manager_required">(* = '.elgg_echo('requiredfields').')</div>';
 	
+	if (elgg_in_context('admin')) {
+		$form_body .= elgg_view('input/hidden', array(
+			'name' => 'admin',
+			'value' => 1,
+		));
+	}
+	
 	$form = elgg_view('input/form', array(
 									'id' => 'event_manager_event_edit', 
 									'name' 	=> 'event_manager_event_edit', 

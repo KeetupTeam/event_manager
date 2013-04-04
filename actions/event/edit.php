@@ -275,4 +275,8 @@ if (!empty($title) && !empty($start_day) && !empty($location)) {
 	register_error(elgg_echo("event_manager:action:event:edit:error_fields"));
 }
 
+if (get_input('admin', 0)) {
+	$forward_url = 'admin/moderator/publish/internal_landingpages_events_draft/'.$event->guid;
+}
+
 forward($forward_url);

@@ -7,7 +7,12 @@ if(!empty($guid) && $entity = get_entity($guid)){
 		if($event->delete())		{
 			system_message(elgg_echo("event_manager:action:event:delete:ok"));
 		} 
-		forward("/events");
+		
+		$forward_url = '/events';
+		if (get_input('admin', 0)) {
+			$forward_url = REFERER;
+		}
+		forward($forward_url);
 	}
 }
 

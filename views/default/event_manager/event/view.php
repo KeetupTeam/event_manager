@@ -140,7 +140,7 @@ if ($event->with_sponsors) {
 }
 
 // Comments
-if ($event->comments_on) {
+if ($event->comments_on && !elgg_in_context('admin')) {
 	$body .= elgg_view_comments($event);
 }
 
