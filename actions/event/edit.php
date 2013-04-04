@@ -26,13 +26,15 @@ $notify_onsignup = get_input("notify_onsignup");
 $endregistration_day = get_input("endregistration_day");
 $max_attendees = get_input("max_attendees");
 $waiting_list = get_input("waiting_list");
-$access_id = get_input("access_id");
+//$access_id = get_input("access_id");
+$access_id = ACCESS_PUBLIC;
 $with_program = get_input("with_program");
 $with_speakers = get_input("with_speakers");
 $with_sponsors = get_input("with_sponsors");
 $delete_current_icon = get_input("delete_current_icon");
 $registration_needed = get_input("registration_needed");
-$register_nologin = get_input("register_nologin");
+//$register_nologin = get_input("register_nologin");
+$register_nologin = '0';
 
 $event_interested = get_input("event_interested");
 $event_presenting = get_input("event_presenting");
