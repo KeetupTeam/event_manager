@@ -10,6 +10,12 @@
 		if($event->getSubtype() == Event::SUBTYPE) {
 			
 			if(($user = get_entity($user_guid)) && ($rel = get_input("type"))) {
+				
+				if (!$event->canEdit() && $user_guid != elgg_get_logged_in_user_guid()) {
+					register_error(elgg_echo('event_manager:event:relationship:message:error'));
+					forward($forward_url);
+				}
+				
 				//echo '- loggedin and relation type is set<br />';
 				if($rel == EVENT_MANAGER_RELATION_ATTENDING) {
 					//echo '- relation type is \'attending\'<br />';

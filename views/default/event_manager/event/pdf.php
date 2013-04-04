@@ -12,27 +12,27 @@
 	// event details
 	$event_details = "<table>";
 	if($location = $event->getLocation()){
-		$event_details .= '<tr><td><b>'.elgg_echo('event_manager:edit:form:location').'</b></td><td>: ';
+		$event_details .= '<tr><td><b>'.elgg_echo('event_manager:edit:form:location').'</b></td><td> ';
 		$event_details .= $event->getLocation();
 		$event_details .= '</td></tr>';
 	}
 	
-	$event_details .= '<tr><td><b>'.elgg_echo('event_manager:edit:form:start_day').'</b></td><td>: '.date(EVENT_MANAGER_FORMAT_DATE_EVENTDAY, $event->start_day).'</td></tr>';
+	$event_details .= '<tr><td><b>'.elgg_echo('event_manager:edit:form:start_day').'</b></td><td> '.date(EVENT_MANAGER_FORMAT_DATE_EVENTDAY, $event->start_day).'</td></tr>';
 	
 	if($organizer = $event->organizer){
-		$event_details .= '<tr><td><b>'.elgg_echo('event_manager:edit:form:organizer').'</b></td><td>: '.$organizer.'</td></tr>';
+		$event_details .= '<tr><td><b>'.elgg_echo('event_manager:edit:form:organizer').'</b></td><td> '.$organizer.'</td></tr>';
 	}
 	
 	if($description = $event->description){
-		$event_details .= '<tr><td><b>'.elgg_echo('description').'</b></td><td>: '. $description .'</td></tr>';
+		$event_details .= '<tr><td><b>'.elgg_echo('description').'</b></td><td> '. $description .'</td></tr>';
 	}
 	
 	if($region = $event->region){
-		$event_details .= '<tr><td><b>'.elgg_echo('event_manager:edit:form:region').'</b></td><td>: '.$region.'</td></tr>';
+		$event_details .= '<tr><td><b>'.elgg_echo('event_manager:edit:form:region').'</b></td><td> '.$region.'</td></tr>';
 	}
 	
 	if($type = $event->event_type){
-		$event_details .= '<tr><td><b>'.elgg_echo('event_manager:edit:form:type').'</b></td><td>: '.$type.'</td></tr>';
+		$event_details .= '<tr><td><b>'.elgg_echo('event_manager:edit:form:type').'</b></td><td> '.$type.'</td></tr>';
 	}
 	
 	$event_details .= "</table>";

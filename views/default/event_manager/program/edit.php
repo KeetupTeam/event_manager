@@ -31,7 +31,7 @@
 			}
 			
 			$program = '<div id="event_manager_event_view_program">';
-			$program .= '<ul class="elgg-tabs elgg-htabs">';
+			$program .= '<ul class="elgg-tabs elgg-htabs no-loading">';
 			
 			$program .= $tabtitles;
 			

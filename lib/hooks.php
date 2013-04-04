@@ -15,7 +15,7 @@
 		if($event){
 			$user = elgg_extract("entity", $params);
 			
-			if($event->getOwnerGUID() != $user->getGUID()){
+			if($event->canEdit() || $user->getGUID() == elgg_get_logged_in_user_guid()){
 				$href = elgg_get_site_url() . 'action/event_manager/event/rsvp?guid=' . $event->getGUID() . '&user=' . $user->getGUID() . '&type=' . EVENT_MANAGER_RELATION_UNDO;
 				$href = elgg_add_action_tokens_to_url($href);
 				
