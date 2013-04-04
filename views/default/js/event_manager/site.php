@@ -132,6 +132,9 @@ function event_manager_program_add_day(form){
 				$("#event_manager_event_view_program a[rel='day_" + guid + "']").click();
 			}
 		} else {
+			if (response.error) {
+				elgg.register_error(response.error);
+			}
 			$(form).find("input[type='submit']").show();
 		}
 	}, 'json');

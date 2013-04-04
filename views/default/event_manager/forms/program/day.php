@@ -48,7 +48,7 @@
 		$form_body .= elgg_view('input/hidden', array('name' => 'guid', 'value' => $guid));
 		$form_body .= elgg_view('input/hidden', array('name' => 'parent_guid', 'value' => $parent_guid));
 		
-		$form_body .= "<label>" . elgg_echo("title") . "</label><br />";
+		$form_body .= "<label>" . elgg_echo("title") . " *</label><br />";
 		$form_body .= elgg_view('input/text', array('name' => 'title', 'value' => $title));
 		$form_body .= "<label>" . elgg_echo("event_manager:edit:form:start_day") . " *</label><br />";
 		$form_body .= elgg_view('input/date', array('name' => 'date',  'id' => 'date',  'value' => $date)).'<br />';

@@ -27,7 +27,7 @@
 				// create new
 				$day = new EventDay();
 			}
-			if($day && !empty($date)){
+			if($day && !empty($date) && !empty($title)){
 				$day->title				= $title;
 				$day->container_guid	= $event->getGUID();
 				$day->owner_guid		= $event->getGUID();
@@ -58,6 +58,9 @@
 					$result['content_title'] = $content_title;
 					$result['content_body'] = $content_body;
 				}
+			}
+			else {
+				$result['error'] = elgg_echo('event_manager:action:event:edit:error_fields');
 			}
 		}
 	}
