@@ -389,3 +389,6 @@
 .elgg-module-event-manager-sponsors {
 	width: 500px;
 }
+#openmaps {
+	cursor: pointer;
+}

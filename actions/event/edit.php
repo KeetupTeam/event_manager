@@ -81,7 +81,7 @@ if (!empty($max_attendees) && !is_numeric($max_attendees)) {
 	$max_attendees = "";
 }
 
-if (!empty($title) && !empty($start_day)) {
+if (!empty($title) && !empty($start_day) && !empty($location)) {
 	if (!$event) {
 		$newEvent = true;
 		$event = new Event();

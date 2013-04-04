@@ -102,6 +102,8 @@
 		event_manager_get_form_pulldown_hours('start_time_hours', $start_time_hours).
 		event_manager_get_form_pulldown_minutes('start_time_minutes', $start_time_minutes)."</td>";
 	
+	$form_body .= "<tr><td class='event_manager_event_edit_label'>" . elgg_echo('event_manager:edit:form:location') . " *</td><td>" . elgg_view('input/text', array('name' => 'location', 'id' => 'openmaps', 'value' => $fields["location"], 'readonly' => true)) . "</td></tr>";
+	
 	$form_body .= "<tr><td class='event_manager_event_edit_label'>" . elgg_echo('event_manager:edit:form:shortdescription') . "</td><td>" . elgg_view('input/text', array('name' => 'shortdescription', 'value' => $fields["shortdescription"])) . "</td></tr>";
 	
 	$form_body .= "<tr><td class='event_manager_event_edit_label'>" . elgg_echo('description') . "</td><td>" . elgg_view('input/longtext', array('name' => 'description', 'value' => $fields["description"])) . "</td></tr>";
@@ -124,8 +126,6 @@
 	$form_body .= "</td></tr>";
 
 	$form_body .= "<tr><td class='event_manager_event_edit_label'>" . elgg_echo('event_manager:edit:form:venue') . "</td><td>" . elgg_view('input/text', array('name' => 'venue', 'value' => $fields["venue"])) . "</td></tr>";
-	
-	$form_body .= "<tr><td class='event_manager_event_edit_label'>" . elgg_echo('event_manager:edit:form:location') . "</td><td>" . elgg_view('input/text', array('name' => 'location', 'id' => 'openmaps', 'value' => $fields["location"], 'readonly' => true)) . "</td></tr>";
 	
 	if($region_options)	{
 		$form_body .= "<tr><td class='event_manager_event_edit_label'>" . elgg_echo('event_manager:edit:form:region') . "</td><td>" . elgg_view('input/dropdown', array('name' => 'region', 'value' => $fields["region"], 'options' => $region_options)) . "</td></tr>";
