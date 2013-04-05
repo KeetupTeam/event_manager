@@ -30,9 +30,9 @@
 	
 	if($entity && $entity->canEdit()) {
 		
-		if(empty($title)){
-			$title = elgg_echo('event_manager:editregistration:addfield:title');
-		}
+//		if(empty($title)){
+//			$title = elgg_echo('event_manager:editregistration:addfield:title');
+//		}
 		
 		$form_body = elgg_view('input/hidden', array('name' => 'event_guid', 'value' => $event_guid));
 		$form_body .= elgg_view('input/hidden', array('name' => 'question_guid', 'value' => $question_guid));

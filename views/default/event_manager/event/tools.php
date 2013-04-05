@@ -11,14 +11,14 @@
 	
 	$url_upload = "events/event/upload/" . $event->getGUID();
 	if ($in_context_admin) {
-		$url_upload = 'admin/moderator/publish/internal_landingpages_events_upload/'.$event->getGUID();
+		$url_upload = 'admin/moderator/publish/events_upload/'.$event->getGUID();
 	}
 	$toolLinks .= "<li>" . elgg_view("output/url", array("href" => $url_upload, "text" => elgg_echo("event_manager:event:uploadfiles"))) . "</li>";
 	
 	if($event->registration_needed)	{
 		$url_registration = "events/registrationform/edit/". $event->getGUID();
 		if ($in_context_admin) {
-			$url_registration = 'admin/moderator/publish/internal_landingpages_events_registrationform/'.$event->getGUID();
+			$url_registration = 'admin/moderator/publish/events_registrationform/'.$event->getGUID();
 		}
 		$toolLinks .= "<li>" . elgg_view("output/url", array("href" =>  $url_registration, "text" => elgg_echo("event_manager:event:editquestions"))) . "</li>";
 	}

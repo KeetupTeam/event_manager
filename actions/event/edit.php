@@ -276,7 +276,7 @@ if (!empty($title) && !empty($start_day) && !empty($location)) {
 }
 
 if (get_input('admin', 0)) {
-	$forward_url = 'admin/moderator/publish/internal_landingpages_events_draft/'.$event->guid;
+	$forward_url = 'admin/moderator/publish/events_draft/'.$event->guid;
 }
 
 forward($forward_url);
