@@ -96,10 +96,16 @@ var infowindow = null;
 			if ($(this).next().hasClass('actions_tools')) {
 				$(".event_manager_event_actions_drop_down.actions_rsvp").hide();
 			}
-			else if ($(this).next().hasClass('actions_rsvp')) {
-				$(".event_manager_event_actions_drop_down.actions_tools").hide();
+			else {
+				if ($(this).next().hasClass('actions_rsvp')) {
+					$(".event_manager_event_actions_drop_down.actions_tools").hide();
+				}
 			}
-			var css_top = $(this).offset().top - $(this).height();
+			var mult = 1;
+			if ($('body').hasClass('bodyAdmin')) {
+				mult = 14;
+			}
+			var css_top = $(this).offset().top - mult*$(this).height();
 			$(this).next().css({top: css_top}).show();
         }
         

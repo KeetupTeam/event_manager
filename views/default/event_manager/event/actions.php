@@ -12,29 +12,33 @@
 		}	
 	}
 	
-	if (elgg_is_logged_in()) {
-		if ($rsvp = elgg_view("event_manager/event/rsvp", $vars)) {
-			$options[] = $rsvp;
-		}
-
-		if (!in_array($context, array("widgets", "maps"))) {
-			if ($registration = elgg_view("event_manager/event/registration", $vars)) {
-				$options[] = $registration;
-			}
-		}		
-	} else {
-		if ($event->register_nologin) {
-			$register_link = '/events/event/register/'.$event->getGUID();
-			
-			$register_button = elgg_view('output/url', array("class" => "elgg-button elgg-button-submit", "href" => $register_link, "text" => elgg_echo('event_manager:event:register:register_link')));
-
-			if ($vars["full_view"]) {
-				$register_button = "<div class='center'>" . $register_button . "</div>";
-			}
-			
-			$options[] = $register_button;
-		}
-	}
+	/**
+	 * KTODO: Comentado por el momento ya que los usuarios normales no podran
+	 * registrarse al evento, no esta definido como se debe hacer esto
+	 */
+//	if (elgg_is_logged_in()) {
+//		if ($rsvp = elgg_view("event_manager/event/rsvp", $vars)) {
+//			$options[] = $rsvp;
+//		}
+//
+//		if (!in_array($context, array("widgets", "maps"))) {
+//			if ($registration = elgg_view("event_manager/event/registration", $vars)) {
+//				$options[] = $registration;
+//			}
+//		}		
+//	} else {
+//		if ($event->register_nologin) {
+//			$register_link = '/events/event/register/'.$event->getGUID();
+//			
+//			$register_button = elgg_view('output/url', array("class" => "elgg-button elgg-button-submit", "href" => $register_link, "text" => elgg_echo('event_manager:event:register:register_link')));
+//
+//			if ($vars["full_view"]) {
+//				$register_button = "<div class='center'>" . $register_button . "</div>";
+//			}
+//			
+//			$options[] = $register_button;
+//		}
+//	}
 
 	if ($event->show_attendees && (elgg_in_context("widgets") || elgg_in_context("maps"))) {
 		$attending_count = 0;

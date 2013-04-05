@@ -4,6 +4,8 @@
  * Event view
  */
 
+forward();
+
 $guid = get_input("guid");
 
 if (!empty($guid) && ($entity = get_entity($guid))) {

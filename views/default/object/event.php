@@ -83,6 +83,7 @@ else {
 			'text' => $event->title,
 			'href' => landing_pages_events_get_url($event),
 			'is_trusted' => true,
+			'target' => '_blank',
 		);
 		$title_link = elgg_view('output/url', $params_title);
 		$params['title'] = $title_link;

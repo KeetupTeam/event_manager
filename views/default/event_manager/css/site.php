@@ -188,6 +188,12 @@
 .actions_tools {
 	left: 35px;
 }
+.bodyAdmin .actions_rsvp {
+	left: 65px;
+}
+.bodyAdmin .actions_tools {
+	left: 15px;
+}
 /* Event Program Edit */
 #event_manager_program_edit {
 	float: right;
