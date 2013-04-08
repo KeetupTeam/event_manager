@@ -50,6 +50,7 @@ $start_time_minutes = get_input("start_time_minutes");
 $start_time = mktime($start_time_hours, $start_time_minutes, 0, 0, 0, 0);
 
 $forward_url = REFERER;
+$error = false;
 
 if (!empty($start_day)) {
 	$date = explode('-', $start_day);
@@ -233,7 +234,9 @@ if (!empty($title) && !empty($start_day) && !empty($location)) {
 } else {
 
 	// TODO: replace with sticky forms functionality
-
+	
+	$error = true;
+	
 	$_SESSION['createevent_values']['title'] = $title;
 	$_SESSION['createevent_values']['shortdescription'] = $shortdescription;
 	$_SESSION['createevent_values']['tags'] = $tags;
@@ -275,7 +278,7 @@ if (!empty($title) && !empty($start_day) && !empty($location)) {
 	register_error(elgg_echo("event_manager:action:event:edit:error_fields"));
 }
 
-if (get_input('admin', 0)) {
+if (get_input('admin', 0) && !$error) {
 	$forward_url = 'admin/moderator/publish/events_draft/'.$event->guid;
 }
 
