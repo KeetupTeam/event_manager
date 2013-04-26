@@ -111,10 +111,14 @@ var infowindow = null;
         
 		event.stopPropagation();
     });
-	$(":not(.event_manager_event_actions:not)").live('click', function(event) {
+	//KTODO: Rewrite this comment js line, because throws errors in jquery version 1.9 
+	/*$(":not(.event_manager_event_actions:not)").live('click', function(event) {
+		$(".event_manager_event_actions").next().hide();
+	});*/
+
+	$(":not(.event_manager_event_actions)", 'body').live("click", function(){
 		$(".event_manager_event_actions").next().hide();
 	});
-
     // hide drop down menu items
     $("body").live("click", function(){
     	$("body > .event_manager_event_actions_drop_down").remove();
