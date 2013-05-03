@@ -39,9 +39,9 @@ function event_manager_init() {
 	// Register entity_type for search
 	elgg_register_entity_type('object', Event::SUBTYPE);
 
-	elgg_extend_view("css/elgg", "event_manager/css/site");
+	elgg_extend_view("css/admin", "event_manager/css/site");
 
-	elgg_extend_view("js/elgg", "js/event_manager/site");
+	elgg_extend_view("js/admin", "js/event_manager/site");
 	elgg_extend_view("page/elements/head", "event_manager/metatags");
 
 	elgg_register_page_handler("events", "event_manager_page_handler");
@@ -74,22 +74,22 @@ function event_manager_init() {
 	elgg_register_js("event_manager.maps.base", "//maps.googleapis.com/maps/api/js?key=" . $maps_key . "&sensor=true");
 
 	elgg_register_js("jquery.tweet", elgg_get_site_url() . "mod/event_manager/vendors/tweet/jquery.tweet.js");
-	
+
 	elgg_register_js('jquery.form', 'mod/event_manager/vendors/jquery-form/jquery.form.js');
 	elgg_load_js('jquery.form');
-	
+
 	// Speakers
 	$path_actions_speakers = elgg_get_plugins_path() . 'event_manager/actions/speakers/';
 	elgg_register_action('event_manager/speakers/edit', $path_actions_speakers . 'edit.php');
 	elgg_register_action('event_manager/speakers/delete', $path_actions_speakers . 'delete.php');
 	elgg_register_plugin_hook_handler('entity:icon:url', 'object', 'event_manager_eventspeaker_icon_url_override');
-	
+
 	// Sponsors
 	$path_actions_sponsors = elgg_get_plugins_path() . 'event_manager/actions/sponsors/';
 	elgg_register_action('event_manager/sponsors/edit', $path_actions_sponsors . 'edit.php');
 	elgg_register_action('event_manager/sponsors/delete', $path_actions_sponsors . 'delete.php');
 	elgg_register_plugin_hook_handler('entity:icon:url', 'object', 'event_manager_eventsponsor_icon_url_override');
-	
+
 }
 
 function event_manager_page_handler($page) {
@@ -195,7 +195,7 @@ function event_manager_pagesetup() {
 }
 
 function event_manager_eventspeaker_icon_url_override($hook, $type, $returnvalue, $params) {
-	
+
 	/* @var ElggGroup $group */
 	$eventspeaker = $params['entity'];
 	$size = $params['size'];
@@ -212,7 +212,7 @@ function event_manager_eventspeaker_icon_url_override($hook, $type, $returnvalue
 }
 
 function event_manager_eventsponsor_icon_url_override($hook, $type, $returnvalue, $params) {
-	
+
 	/* @var ElggGroup $group */
 	$eventsponsor = $params['entity'];
 	$size = $params['size'];
@@ -258,5 +258,3 @@ elgg_register_action("event_manager/registration/pdf", dirname(__FILE__) . "/act
 elgg_register_action("event_manager/event/register", dirname(__FILE__) . "/actions/event/register.php", "public");
 
 elgg_register_action("event_manager/migrate/calender", dirname(__FILE__) . "/actions/migrate/calender.php", "admin");
-
-
