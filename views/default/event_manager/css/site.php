@@ -398,3 +398,6 @@
 #openmaps {
 	cursor: pointer;
 }
+.elgg-module.elgg-module-main.elgg-module-event-actions {
+	position: inherit;
+}

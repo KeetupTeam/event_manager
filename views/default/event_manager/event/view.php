@@ -117,7 +117,7 @@ $event_details .= "</table>";
 
 $body = elgg_view_module("main", "", $event_details);
 
-$body .= elgg_view_module("main", "", elgg_view("event_manager/event/actions", $vars));
+$body .= elgg_view_module("main", "", elgg_view("event_manager/event/actions", $vars), array('class' => 'elgg-module-event-actions'));
 
 // Attendees
 if ($event->show_attendees) {

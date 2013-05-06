@@ -105,8 +105,11 @@ var infowindow = null;
 			if ($('body').hasClass('bodyAdmin')) {
 				mult = 14;
 			}
-			var css_top = $(this).offset().top - mult*$(this).height();
-			$(this).next().css({top: css_top}).show();
+//			var css_top = $(this).offset().top - mult*$(this).height();
+//			$(this).next().css({top: css_top}).show();
+			
+			var css_left = $(this).offset().left;
+			$(this).next().css({left: css_left}).show();
         }
         
 		event.stopPropagation();
