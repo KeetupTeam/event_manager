@@ -89,6 +89,7 @@ function event_manager_init() {
 	elgg_register_action('event_manager/sponsors/edit', $path_actions_sponsors . 'edit.php');
 	elgg_register_action('event_manager/sponsors/delete', $path_actions_sponsors . 'delete.php');
 	elgg_register_plugin_hook_handler('entity:icon:url', 'object', 'event_manager_eventsponsor_icon_url_override');
+	elgg_register_plugin_hook_handler('view', 'object/elements/owner_user_block', 'event_manager_view_object_elements_owner_user_block_hook');
 
 }
 

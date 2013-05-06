@@ -124,3 +124,23 @@
 		}
 		return $result;
 	}
+	
+	function event_manager_view_object_elements_owner_user_block_hook($hook, $type, $return, $params) {
+	
+	$check_hook = ($hook == 'view');
+	$check_type = ($type == 'object/elements/owner_user_block');
+	
+	if ($check_hook && $check_type) {
+		$vars = elgg_extract('vars', $params, array());
+		if (is_array($vars)) {
+			$entity = elgg_extract('entity', $vars, FALSE);
+			
+			if ($entity instanceof Event) {
+				$return = '';
+			}
+		}
+	}
+	
+	return $return;
+	
+}

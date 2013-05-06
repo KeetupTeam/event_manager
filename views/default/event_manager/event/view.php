@@ -156,7 +156,7 @@ $params = $params + $vars;
 $summary = elgg_view('object/elements/summary', $params);
 
 echo elgg_view('object/elements/full', array(
-	'summary' => $summary,
+//	'summary' => $summary,
 	'body' => $body,
 	'entity' => $event,
 ));
