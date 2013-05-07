@@ -36,7 +36,9 @@
 			return $result;
 		}
 		
-		if (($entity = elgg_extract("entity", $params)) && elgg_instanceof($entity, "object", Event::SUBTYPE)) {
+		$entity = elgg_extract("entity", $params);
+		
+		if ($entity instanceof Event) {
 			$attendee_menu_options = array(
 				"name" => "attendee_count", 
 				"priority" => 50, 
